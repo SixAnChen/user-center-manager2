@@ -1,0 +1,37 @@
+#配置默认启动端口
+server:
+  port: 9090
+
+#  数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/library-2024?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+    username: root
+    password: 111111
+  #  允许循环依赖
+  main:
+    allow-circular-references: true
+  #  文件上传下载
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+# mybatis相关配置
+mybatis:
+  #  包所在路径
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.springboot.entity
+
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+# 配置sql日志
+logging:
+  level:
+    com.example.springboot.mapper: debug
